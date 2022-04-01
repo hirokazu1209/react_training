@@ -8,14 +8,26 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type="text/jsx">
-      const app = document.getElementById('app');
-      function Header() {
-        return <h1>Develop. Preview. Ship. 🚀</h1>
+      function createTitle(title) {
+        if(title) {
+          return title
+        } else {
+          return 'Default title'
+        }
+      }
+      function Header({ title }) {
+        return <h1>{ title ? title : 'Default Title' }</h1>
       }
       function HomePage() {
+        const names = ['Ada Lovrlace', 'Grace Hopper', 'Margaret Hamilton']
         return (
           <div>
-            <Header />
+            <Header title="Develop. Preview. Ship." />
+            <ul>
+              {names.map(name => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
           </div>
         )
       }
