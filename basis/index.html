@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <div id="app"></div>
+    <!-- コアReactライブラリ -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <!-- DOMでReactを使用できる様にするDOM固有のメソッド -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/jsx">
+      function createTitle(title) {
+        if(title) {
+          return title
+        } else {
+          return 'Default title'
+        }
+      }
+      <!-- props -->
+      function Header({ title }) {
+        return <h1>{ title ? title : 'Default Title' }</h1>
+      }
+      function HomePage() {
+        const names = ['Ada Lovrlace', 'Grace Hopper', 'Margaret Hamilton']
+        return (
+          <div>
+            <Header title="Develop. Preview. Ship." />
+            <ul>
+              {names.map(name => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+      ReactDOM.render(<HomePage />, app);
+    </script>
+  </body>
+</html>
